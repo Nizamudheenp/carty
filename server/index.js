@@ -8,7 +8,10 @@ const productRoutes = require("./routes/ProductsRoute")
 const orderRoutes = require("./routes/OrderRoute")
 const app = express();
 connectDB()
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true 
+  }));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
