@@ -1,28 +1,39 @@
 const ProductDB = require("../models/ProductModel");
 
+
 exports.getProducts = async (req, res) => {
   try {
-    const products = await ProductDB.find().sort({ createdAt: -1 });
+    const { category, tag, search } = req.query;
+
+    let filter = {};
+    if (category) filter.category = category;
+    if (tag) filter.tags = tag;
+    if (search) filter.name = { $regex: search, $options: 'i' };
+
+    const products = await ProductDB.find(filter).sort({ createdAt: -1 });
     res.json(products);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
 };
 
+
 exports.createProduct = async (req, res) => {
   try {
-    const { name, description, price, category } = req.body;
-    const image = req.file?.path;
-    if (!name || !description || !price || !category || !image) {
-      return res.status(400).json({ message: "all fields are required" })
-  }
+    const { name, description, price, category, tags, stock  } = req.body;
+    const images = req.files?.map(file => file.path);
+    if (!name || !description || !price || !category || !images || images.length === 0) {
+      return res.status(400).json({ message: "All fields including images are required" });
+    }
 
     const newProduct = new ProductDB({
       name,
       description,
       price,
       category,
-      image
+      tags,
+      stock,
+      images
     });
 
     const savedProduct = await newProduct.save();
@@ -44,26 +55,39 @@ exports.getProductById = async (req, res) => {
   }
 }
 
+exports.getFeaturedProducts = async (req, res) => {
+  try {
+    const featured = await ProductDB.find({ tags: "featured" }).limit(10);
+    res.json(featured);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+
 exports.updateProduct = async (req, res) => {
   try {
-      const { name, description, price, category, image , stock } = req.body
+    const { name, description, price, category, tags, stock } = req.body;
+    const images = req.files?.map(file => file.path); // For multiple image update
 
-      const product = await ProductDB.findById(req.params.id);
-      if (!product) return res.status(404).json({ message: "Product not found" })
-      product.name = name
-      product.description = description
-      product.price = price
-      product.category = category
-      product.image = image
-      product.stock = stock
+    const product = await ProductDB.findById(req.params.id);
+    if (!product) return res.status(404).json({ message: "Product not found" });
 
-      const newproduct = await product.save();
-      res.status(201).json(newproduct);
+    product.name = name || product.name;
+    product.description = description || product.description;
+    product.price = price || product.price;
+    product.category = category || product.category;
+    product.tags = tags || product.tags;
+    product.stock = stock ?? product.stock;
+    if (images && images.length > 0) product.images = images;
 
+    const updated = await product.save();
+    res.status(200).json(updated);
   } catch (error) {
-      return res.status(500).json({ message: "Server Error", error: error.message });
+    return res.status(500).json({ message: "Server Error", error: error.message });
   }
-}
+};
+
 
 exports.deleteProduct = async (req, res) => {
   try {

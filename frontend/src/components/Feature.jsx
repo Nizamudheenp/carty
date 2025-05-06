@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../App.css'
 const Feature = () => {
   return (
     <section id="feature" className="section-p1">

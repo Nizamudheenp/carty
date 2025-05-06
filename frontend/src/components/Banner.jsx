@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../App.css'
 const Banner = () => {
   return (
     <section id="banner" className="section-m1">

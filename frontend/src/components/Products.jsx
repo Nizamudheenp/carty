@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../App.css'
 const Product = ({ image, brand, title, price }) => {
   return (
     <div className="pro">

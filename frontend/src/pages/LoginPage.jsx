@@ -16,8 +16,13 @@ function LoginPage() {
       `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
       formData);
       const token = response.data.token;
+      const user = response.data.user;
+      console.log(response);
+      localStorage.setItem('user',JSON.stringify(user))
       localStorage.setItem('token', token);
       alert('Login successful!');
+      window.location.href = '/';
+
     } catch (err) {
       alert(err.response?.data?.message || 'Login failed');
     }
