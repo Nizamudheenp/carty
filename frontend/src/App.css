@@ -332,8 +332,9 @@ body{
 }
 #Product-1 .pro-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 20px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 #Product-1 .pro{

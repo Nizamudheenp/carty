@@ -8,6 +8,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
+  const [brand, setBrand] = useState('');
   const [tags, setTags] = useState('');
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,6 +22,7 @@ const AddProduct = () => {
     formData.append('name', name);
     formData.append('description', description);
     formData.append('price', price);
+    formData.append('brand',brand);
     formData.append('category', category);
     formData.append('tags', tags);
   
@@ -87,6 +89,15 @@ const AddProduct = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
+            className="add-product-field"
+          />
+        </div>
+        <div className="add-product-input">
+          <input
+            type="text"
+            placeholder="Brand"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
             className="add-product-field"
           />
         </div>

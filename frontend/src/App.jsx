@@ -2,7 +2,6 @@ import { Routes, Route, useLocation, } from 'react-router-dom';
 import CartPage from "./pages/CartPage"
 import Home from "./pages/Home"
 import LoginPage from "./pages/LoginPage"
-import ProductPage from "./pages/ProductPage"
 import RegisterPage from "./pages/RegisterPage"
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,20 +10,21 @@ import AdminDashboard from './pages/AdminDashboard';
 import AddProduct from './components/AddProduct';
 import EditProduct from './components/EditProduct';
 import Shop from './pages/Shop';
+import ProductDetails from './pages/ProductPage';
 
 
 
 function App() {
 
   const location = useLocation();
-  const shouldShowFooter = !['/login', '/register'].includes(location.pathname);
+  const shouldShowFooter = ['/'].includes(location.pathname);
   return (
     <>
 
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />

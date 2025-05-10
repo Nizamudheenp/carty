@@ -10,6 +10,7 @@ const EditProduct = () => {
         description: '',
         price: '',
         category: '',
+        brand:'',
         tags: [],
         images: [],
     });
@@ -108,6 +109,17 @@ const EditProduct = () => {
                             type="text"
                             name="category"
                             value={product.category}
+                            onChange={handleInputChange}
+                            required
+                            className="edit-product-field"
+                        />
+                    </div>
+                    <div className="edit-product-input">
+                        <label className="edit-product-label">Brand</label>
+                        <input
+                            type="text"
+                            name="brand"
+                            value={product.brand}
                             onChange={handleInputChange}
                             required
                             className="edit-product-field"

@@ -6,15 +6,16 @@ import Banner from '../components/Banner'
 import SmallBanner from '../components/SmallBanner'
 import SmallBanner2 from '../components/SmallBanner2'
 import NewsLetter from '../components/NewsLetter'
+import ProductCollection from '../components/ProductCollection'
 
 function Home() {
   return (
     <div>
     <Hero />
     <Feature />
-    <Products />
+    <ProductCollection title="Featured Products" tag="Top Brand" limit={8} />  
     <Banner />
-    <Products />
+    <ProductCollection title="Summer Sales" tag="interested in" limit={8} />  
     <SmallBanner />
     <SmallBanner2 />
     <NewsLetter />

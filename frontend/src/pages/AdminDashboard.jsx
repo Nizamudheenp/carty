@@ -45,6 +45,7 @@ const AdminDashboard = () => {
             <p><strong>Description:</strong> {product.description}</p>
             <p><strong>Price:</strong> ${product.price}</p>
             <p><strong>Category:</strong> {product.category}</p>
+            <p><strong>Brand:</strong> {product.brand}</p>
             <p><strong>Tags:</strong> {product.tags.join(', ')}</p>
             <div className="admin-product-images">
               <strong>Images:</strong>
