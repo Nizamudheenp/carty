@@ -11,6 +11,9 @@ import AddProduct from './components/AddProduct';
 import EditProduct from './components/EditProduct';
 import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductPage';
+import CheckoutPage from './pages/CheckoutPage';
+import PaymentPage from './pages/PaymentPage';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 
 
@@ -27,6 +30,9 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route

@@ -2,21 +2,30 @@ const orderDB = require("../models/OrderModel");
 
 exports.createOrder = async (req, res) => {
   try {
-    const { products, totalAmount, shippingAddress } = req.body;
+    const {
+      products,
+      totalAmount,
+      shippingAddress,
+      paymentIntentId,
+      status, 
+    } = req.body;
 
     if (!products || products.length === 0) {
       return res.status(400).json({ message: "Order must contain at least one product." });
     }
 
-    if (!shippingAddress || !totalAmount) {
-      return res.status(400).json({ message: "Shipping address and total amount are required." });
+    if (!shippingAddress || !totalAmount || !paymentIntentId || !status) {
+      return res.status(400).json({ message: "Required order/payment data missing." });
     }
 
     const order = new orderDB({
       userId: req.user.id,
       products,
       totalAmount,
-      shippingAddress
+      shippingAddress,
+      paymentIntentId,
+      status,
+      timestamp: new Date(),
     });
 
     const newOrder = await order.save();

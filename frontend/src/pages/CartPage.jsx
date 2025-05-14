@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../pages/pages.css";
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +54,7 @@ const CartPage = () => {
   );
 
   const handleCheckout = () => {
-    navigate("/checkout");
+    navigate("/checkout", { state: { amount: totalPrice ,cartItems, token } });
   };
 
   useEffect(() => {
