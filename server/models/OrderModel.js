@@ -10,9 +10,14 @@ const OrderSchema = new mongoose.Schema({
   ],
   totalAmount: { type: Number, required: true },
   shippingAddress: { type: String, required: true },
-   paymentIntentId: { type: String, required: true },
-  status: { type: String, required: true },
-   timestamp: { type: Date, default: Date.now },
+  paymentIntentId: { type: String, required: true },
+  status: {
+    type: String,
+    enum: ["processing", "shipped", "delivered", "cancelled"],
+    default: "processing",
+    required: true
+  },
+  timestamp: { type: Date, default: Date.now },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', OrderSchema);

@@ -23,7 +23,7 @@ const Header = () => {
     if (isLoggedIn) {
       setShowUserDropdown(prev => !prev);
     } else {
-      navigate('/login'); 
+      navigate('/login');
     }
   };
 
@@ -48,13 +48,12 @@ const Header = () => {
 
   return (
     <section id="header">
-      <Link to="/"><img src="/images/logo1.jpg" className="log" alt="Logo" /></Link>
+      <Link to="/"><img src="/images/ChatGPT Image May 16, 2025, 10_31_34 AM.png" className="log" alt="Logo" /></Link>
 
       <div>
         <ul id="navbar" className={isMobileMenuOpen ? 'active' : ''}>
           <li><Link className="active" to="/">Home</Link></li>
           <li><Link to="/shop">Shop</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           <li id="lg-bag"><Link to="/cart"><i className="bi bi-cart2"></i></Link></li>
@@ -69,10 +68,19 @@ const Header = () => {
             {isLoggedIn && (
               <div className={`user-dropdown ${showUserDropdown ? '' : 'hidden'}`} id="userDropdown">
                 <p id="userInfo">Logged in as {userInfo?.name || 'User'}</p>
-                <button id="logoutBtn" onClick={handleLogout}>Logout</button>
+                <Link to="/myorders">
+                  <button id="myOrdersBtn">My Orders</button>
+                </Link>
                 {userInfo?.isAdmin && (
                   <Link to="/admin/dashboard"><button id="adminBtn">Admin Dashboard</button></Link>
                 )}
+                {userInfo?.isAdmin && (
+                  <Link to="/admin/orders">
+                    <button id="adminOrdersBtn">Manage Orders</button>
+                  </Link>
+                )}
+
+                <button id="logoutBtn" onClick={handleLogout}>Logout</button>
               </div>
             )}
           </li>

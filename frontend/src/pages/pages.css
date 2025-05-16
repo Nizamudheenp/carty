@@ -270,3 +270,99 @@
     opacity: 1;
   }
 }
+
+/* user orders  */
+.user-orders-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.order-card p {
+  margin: 0.3rem 0;
+}
+
+.order-card ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+/* admin order */
+.admin-orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-orders th, .admin-orders td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.admin-orders select {
+  padding: 4px;
+}
+
+
+.contact-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-details p {
+  margin: 0.5rem 0;
+}
+
+.social-icons i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form .btn {
+  background-color: #088178;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form .btn:hover {
+  background-color: #065f59;
+}
+

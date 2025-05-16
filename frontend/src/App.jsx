@@ -14,6 +14,10 @@ import ProductDetails from './pages/ProductPage';
 import CheckoutPage from './pages/CheckoutPage';
 import PaymentPage from './pages/PaymentPage';
 import PaymentSuccess from './pages/PaymentSuccess';
+import UserOrders from './pages/UserOrders';
+import AdminOrders from './pages/AdminOrders';
+import About from './components/About';
+import Contact from './pages/Contact';
 
 
 
@@ -35,6 +39,10 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path='/myorders' element={<UserOrders />} />
+        <Route path='/about' element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route
           path="/admin/dashboard"
           element={
@@ -59,6 +67,12 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route path="/admin/orders"
+          element={
+            <AdminRoute>
+              <AdminOrders />
+            </AdminRoute>
+          } />
       </Routes>
 
       {shouldShowFooter && <Footer />}
