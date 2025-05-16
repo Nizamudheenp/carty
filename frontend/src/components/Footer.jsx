@@ -6,9 +6,9 @@ const Footer = () => {
       <div className="col">
         <img className="logo" src="/images/logo1.jpg" alt="Logo" />
         <h4>Contact</h4>
-        <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
-        <p><strong>Phone:</strong> +01 2222 365 / +91 24356787</p>
-        <p><strong>Hours:</strong> 10.00 - 5.00, Mon - Sat</p>
+        <p><strong>Address:</strong> Dwaraka road , Wayanad ,Kerala</p>
+        <p><strong>Phone:</strong> +91 8921041795 / +91 24356787</p>
+        <p><strong>Hours:</strong> 10.00 - 10.00, Mon - Sat</p>
         <div className="follow">
           <h4>Follow Us</h4>
           <div className="icon">

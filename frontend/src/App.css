@@ -295,6 +295,11 @@ body {
 
 }
 
+#Hero button:hover {
+  background-color: #088178;
+  color: #000;
+}
+
 /*Hero section end*/
 
 /*feture section start */
@@ -329,24 +334,13 @@ body {
 
 #feature .fe-box h6 {
   display: inline-block;
-  padding: 9px 8px 6px 8px;
+  padding: 10px 8px;
   line-height: 1;
   border-radius: 4px;
-  color: #088178;
-  background-color: #fddde4;
+  color: #fff;
+  background-color: #088178;
 }
 
-#feature .fe-box:nth-child(2) h6 {
-  background-color: #cdebbc;
-}
-
-#feature .fe-box:nth-child(4) h6 {
-  background-color: #cdebbc;
-}
-
-#feature .fe-box:nth-child(6) h6 {
-  background-color: #cdebbc;
-}
 
 /*feture section End */
 

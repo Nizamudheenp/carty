@@ -7,7 +7,7 @@ const About = () => {
         <h1 style={styles.heading}>About Carty</h1>
         <p style={styles.text}>
           Welcome to <strong>Carty</strong> – your one-stop destination for seamless online shopping. 
-          Founded in 2024, Carty was born out of a simple idea: to make online shopping easier, faster, 
+          Founded in 2025, Carty was born out of a simple idea: to make online shopping easier, faster, 
           and more enjoyable for everyone.
         </p>
 

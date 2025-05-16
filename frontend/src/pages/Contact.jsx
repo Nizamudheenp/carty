@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 
+import axios from "axios"
+
 const Contact = () => {
+
+  const [form,setForm]= useState({name:"",email:"",message:""})
+  const [status, setStatus] = useState('');
+  const token= localStorage.getItem("token")
+
+  const handleChange = (e)=>{
+    setForm({...form,[e.target.name]:e.target.value})
+  }
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/contact`,form ,
+        {headers:{Authorization:`Bearer ${token}`}}
+      )
+      setStatus('Message sent successfully!');
+      setForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus('Failed to send message.');
+    }
+  }
+
   return (
     <section className="contact-page section-p1">
       <div className="contact-info">
@@ -26,11 +49,12 @@ const Contact = () => {
       </div>
 
       <div className="contact-form">
+        {status && <p>{status}</p>}
         <h3>Send Us a Message</h3>
-        <form>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea rows="5" placeholder="Your Message" required></textarea>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Your Name" required />
+          <input type="email" name="email" value={form.email} onChange={handleChange}  placeholder="Your Email" required />
+          <textarea rows="5" name="message" value={form.message} onChange={handleChange}  placeholder="Your Message" required></textarea>
           <button type="submit" className="btn">Send Message</button>
         </form>
       </div>
