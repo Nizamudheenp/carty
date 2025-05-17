@@ -18,6 +18,7 @@ import UserOrders from './pages/UserOrders';
 import AdminOrders from './pages/AdminOrders';
 import About from './components/About';
 import Contact from './pages/Contact';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 
@@ -33,13 +34,33 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/cart" element={
+          <ProtectedRoute>
+            <CartPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/checkout" element={
+          <ProtectedRoute>
+            <CheckoutPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/payment" element={
+          <ProtectedRoute>
+            <PaymentPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/payment-success" element={
+          <ProtectedRoute>
+            <PaymentSuccess />
+          </ProtectedRoute>
+        } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path='/myorders' element={<UserOrders />} />
+        <Route path='/myorders' element={
+          <ProtectedRoute>
+            <UserOrders />
+          </ProtectedRoute>
+        } />
         <Route path='/about' element={<About />} />
         <Route path="/contact" element={<Contact />} />
 

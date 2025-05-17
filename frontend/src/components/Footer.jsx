@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="section-p1">
       <div className="col">
-        <img className="logo" src="/images/logo1.jpg" alt="Logo" />
+        <img className="logo" src="/images/ChatGPT Image May 16, 2025, 10_31_34 AM.png" alt="Logo" />
         <h4>Contact</h4>
         <p><strong>Address:</strong> Dwaraka road , Wayanad ,Kerala</p>
         <p><strong>Phone:</strong> +91 8921041795 / +91 24356787</p>

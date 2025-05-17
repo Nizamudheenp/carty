@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 import axios from "axios"
 
@@ -8,12 +9,18 @@ const Contact = () => {
   const [form,setForm]= useState({name:"",email:"",message:""})
   const [status, setStatus] = useState('');
   const token= localStorage.getItem("token")
+  const navigate = useNavigate();
 
   const handleChange = (e)=>{
     setForm({...form,[e.target.name]:e.target.value})
   }
   const handleSubmit = async (e)=>{
     e.preventDefault();
+    if (!token) {
+        alert("Log in is required to send messages.");
+        navigate("/login");
+        return;
+    }
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/contact`,form ,
         {headers:{Authorization:`Bearer ${token}`}}

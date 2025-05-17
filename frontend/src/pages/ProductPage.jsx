@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../pages/pages.css";
+import { useNavigate } from 'react-router-dom';
+
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -10,6 +12,8 @@ const ProductDetails = () => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
 
     const getUserFromToken = () => {
         const token = localStorage.getItem('token');
@@ -61,6 +65,11 @@ const ProductDetails = () => {
     };
     const handleAddToCart = async () => {
         const token = localStorage.getItem("token");
+        if (!token) {
+        alert("Please login to add items to your cart.");
+        navigate("/login");
+        return;
+    }
         await axios.post(
             `${import.meta.env.VITE_BACKEND_URL}/api/products/addToCart`,
             { productId: product._id, quantity: 1 },
