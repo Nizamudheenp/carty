@@ -11,15 +11,15 @@ import ProductCollection from '../components/ProductCollection'
 function Home() {
   return (
     <div>
-    <Hero />
-    <Feature />
-    <ProductCollection title="Featured Products" tag="Top Brand" limit={8} />  
-    <Banner />
-    <ProductCollection title="Summer Sales" tag="interested in" limit={8} />  
-    <SmallBanner />
-    <SmallBanner2 />
-    <NewsLetter />
-  </div>
+      <Hero />
+      <Feature />
+      <ProductCollection title="Featured Products" tag="Top Brand" limit={8} />
+      <Banner />
+      <ProductCollection title="Summer Sales" tag="interested in" limit={8} />
+      <SmallBanner />
+      <SmallBanner2 />
+      <NewsLetter />
+    </div>
   )
 }
 
