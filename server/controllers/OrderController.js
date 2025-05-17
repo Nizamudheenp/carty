@@ -7,7 +7,7 @@ exports.createOrder = async (req, res) => {
       totalAmount,
       shippingAddress,
       paymentIntentId,
-      status, 
+      status,
     } = req.body;
 
     if (!products || products.length === 0) {
