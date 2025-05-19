@@ -25,7 +25,7 @@ export const saveOrderToBackend = async ({
         totalAmount: amount,
         shippingAddress: userAddress,
         paymentIntentId: paymentIntent.id,
-        status: paymentIntent.status,
+        status: "paid",
       },
       {
         headers: {

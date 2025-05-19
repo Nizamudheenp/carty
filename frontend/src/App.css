@@ -250,10 +250,14 @@ body {
   }
 
   .user-dropdown {
-    position: absolute;
-    left: 0;
+    top: 40px;
+    right: 0;
+    left: auto; 
   }
 
+  #mobile .user-icon {
+    margin-left: 10px;
+  }
 
 }
 

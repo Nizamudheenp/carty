@@ -52,11 +52,11 @@ const Header = () => {
 
       <div>
         <ul id="navbar" className={isMobileMenuOpen ? 'active' : ''}>
-          <li><Link className="active" to="/">Home</Link></li>
-          <li><Link to="/shop">Shop</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li id="lg-bag"><Link to="/cart"><i className="bi bi-cart2"></i></Link></li>
+          <li><Link className="active" to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
+          <li><Link to="/shop" onClick={() => setIsMobileMenuOpen(false)}>Shop</Link></li>
+          <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
+          <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link></li>
+          <li id="lg-bag"><Link to="/cart" onClick={() => setIsMobileMenuOpen(false)}><i className="bi bi-cart2"></i></Link></li>
 
           <li className="user-menu" id="userMenu">
             <i
