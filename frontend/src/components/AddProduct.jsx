@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { showToast } from "../utils/toast";
 
 const AddProduct = () => {
   const [name, setName] = useState('');
@@ -40,12 +41,14 @@ const AddProduct = () => {
         }
       );
       setLoading(false);
-      alert('Product added successfully!');
-      navigate('/admin/dashboard');
+      showToast('success', 'Product added successfully!');
+      setTimeout(() => {
+           navigate('/admin/dashboard');
+      }, 1000);
 
     } catch (error) {
       setLoading(false);
-      console.error("Error adding product", error);
+      showToast('error', 'Error adding product');
     }
   };
   
@@ -97,7 +100,7 @@ const AddProduct = () => {
             type="text"
             placeholder="Brand"
             value={tags}
-            onChange={(e) => setTags(e.target.value)}
+            onChange={(e) => setBrand(e.target.value)}
             className="add-product-field"
           />
         </div>

@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../App.css'
+import { showToast } from '../utils/toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
-      formData);
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
+        formData);
       const token = response.data.token;
       const user = response.data.user;
       console.log(response);
-      localStorage.setItem('user',JSON.stringify(user))
+      localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('token', token);
-      alert('Login successful!');
-      window.location.href = '/';
+      showToast('success', 'login successful');
+      setTimeout(() => {
+        navigate('/');
+      }, 500);
 
     } catch (err) {
-      alert(err.response?.data?.message || 'Login failed');
+      showToast('error', 'Login failed');
     }
   };
 
@@ -36,6 +41,9 @@ function LoginPage() {
         <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
         <button type="submit">Login</button>
       </form>
+      <div className="auth-footer">
+        Don’t have an account? <Link to="/register">Register</Link>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../pages/pages.css";
 import { useNavigate } from 'react-router-dom';
+import { showToast } from '../utils/toast';
 
 
 const ProductDetails = () => {
@@ -53,21 +54,25 @@ const ProductDetails = () => {
                 { rating, comment },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            alert('Review submitted successfully');
+            showToast('success','Review submitted successfully')
             setRating(0);
             setComment('');
             const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/getaproduct/${id}`);
             setProduct(res.data);
         } catch (err) {
             console.error('Error submitting review:', err);
-            alert('Failed to submit review');
+            showToast('error','Error submitting review')
         }
     };
     const handleAddToCart = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
         alert("Please login to add items to your cart.");
-        navigate("/login");
+        showToast('error','Please login to add items to your cart')
+        setTimeout(() => {
+              navigate("/login");  
+        }, 500);
+    
         return;
     }
         await axios.post(
@@ -75,7 +80,7 @@ const ProductDetails = () => {
             { productId: product._id, quantity: 1 },
             { headers: { Authorization: `Bearer ${token}` } }
         );
-        alert("Added to cart!");
+        showToast('succees',"Added to cart!");
     };
 
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../pages/AdminDashboard.css';
+import { showToast } from "../utils/toast";
 
 
 const EditProduct = () => {
@@ -56,11 +57,14 @@ const EditProduct = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            alert('Product updated successfully');
-            navigate('/admin/dashboard');
+              showToast('success', 'Product updated successfully');
+              setTimeout(() => {
+                 navigate('/admin/dashboard');
+              }, 1000);
+           
         } catch (error) {
             console.error('Error updating product', error);
-            alert('Error updating product');
+            showToast('error', 'error updating product');
         }
     };
 

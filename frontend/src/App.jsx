@@ -19,6 +19,7 @@ import AdminOrders from './pages/AdminOrders';
 import About from './components/About';
 import Contact from './pages/Contact';
 import ProtectedRoute from './components/ProtectedRoute';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -97,6 +98,18 @@ function App() {
       </Routes>
 
       {shouldShowFooter && <Footer />}
+
+      <Toaster 
+        position="top-right" 
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#333',
+            color: '#fff',
+            borderRadius: '8px',
+          },
+        }}
+      />
 
 
     </>

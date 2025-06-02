@@ -1,32 +1,34 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import '../App.css'
+import { showToast } from '../utils/toast';
+import { Link } from 'react-router-dom';
 
 
 function RegisterPage() {
-  const [formData,setFormData] = useState(
+  const [formData, setFormData] = useState(
     {
-      name :"",
-      email :"",
-      password :""
+      name: "",
+      email: "",
+      password: ""
     }
   )
 
-  
+
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit  =  async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/auth/register`,
         formData
       )
-      alert('Registered successfully!');
+      showToast('success', 'Registered successfully!');
     } catch (error) {
-      alert(err.response?.data?.message || 'Registration failed');
+      showToast('error', 'Registration failed');
     }
   }
 
@@ -40,6 +42,9 @@ function RegisterPage() {
         <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
         <button type="submit">Register</button>
       </form>
+      <div className="auth-footer">
+        Already have an account? <Link to="/login">Login</Link>
+      </div>
     </div>
   )
 }

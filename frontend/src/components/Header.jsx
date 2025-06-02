@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { showToast } from "../utils/toast";
 
 const Header = () => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
@@ -38,7 +39,11 @@ const Header = () => {
     localStorage.removeItem('user');
     setIsLoggedIn(false);
     setShowUserDropdown(false);
-    navigate('/login');
+    showToast('success', 'Logout successful');
+      setTimeout(() => {
+         navigate('/login');
+      }, 500);
+   
   };
 
   useEffect(() => {

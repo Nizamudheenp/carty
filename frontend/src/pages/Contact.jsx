@@ -3,6 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
 import axios from "axios"
+import { showToast } from '../utils/toast';
 
 const Contact = () => {
 
@@ -17,8 +18,11 @@ const Contact = () => {
   const handleSubmit = async (e)=>{
     e.preventDefault();
     if (!token) {
-        alert("Log in is required to send messages.");
-        navigate("/login");
+        showToast('error', 'Log in is required to send messages')
+        
+        setTimeout(() => {
+          navigate("/login");
+        }, 500);
         return;
     }
     try {

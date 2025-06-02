@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { saveOrderToBackend } from "../utils/saveOrder";
+import { showToast } from "../utils/toast";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CheckoutForm = ({ clientSecret, amount, cartItems, userToken }) => {
@@ -30,7 +31,7 @@ const CheckoutForm = ({ clientSecret, amount, cartItems, userToken }) => {
     e.preventDefault();
     if (!stripe || !elements) return;
     if (!shippingAddress) {
-      alert("Please provide a shipping address.");
+      showToast('error','please provide a shipping address')
       return;
     }
     setLoading(true);

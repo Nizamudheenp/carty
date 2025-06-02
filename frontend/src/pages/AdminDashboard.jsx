@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
+import { showToast } from "../utils/toast";
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,7 @@ const AdminDashboard = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      showToast('success', 'deletion successful');
       fetchProducts();
     } catch (error) {
       console.error("Error deleting product", error);

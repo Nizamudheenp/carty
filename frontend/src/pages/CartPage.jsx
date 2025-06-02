@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../pages/pages.css";
+import { showToast } from "../utils/toast";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -34,6 +35,7 @@ const CartPage = () => {
       fetchCart();
     } catch (err) {
       console.error("Error updating quantity:", err);
+      showToast('error', 'Error updating quantity');
     }
   };
 
