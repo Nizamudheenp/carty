@@ -99,7 +99,7 @@ const AddProduct = () => {
           <input
             type="text"
             placeholder="Brand"
-            value={tags}
+            value={brand}
             onChange={(e) => setBrand(e.target.value)}
             className="add-product-field"
           />
