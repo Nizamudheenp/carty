@@ -8,10 +8,19 @@ const productRoutes = require("./routes/ProductsRoute")
 const orderRoutes = require("./routes/OrderRoute")
 const app = express();
 connectDB()
+
+const allowedOrigins = process.env.FRONTEND_URL.split(',').map(origin => origin.trim());
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true 
-  }));
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
