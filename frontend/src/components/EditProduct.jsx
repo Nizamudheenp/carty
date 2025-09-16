@@ -4,6 +4,19 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../pages/AdminDashboard.css';
 import { showToast } from "../utils/toast";
 
+const TAG_OPTIONS = [
+  'New Arrival',
+  'Special Price',
+  'Top Brand',
+  'Best Seller',
+  'Limited Edition',
+  'Top Discount Of The Sale',
+  'Popular',
+  'Sponsored',
+  'Interested In',
+  'Featured',
+  'Top Deal'
+];
 
 const EditProduct = () => {
     const [product, setProduct] = useState({
@@ -11,7 +24,7 @@ const EditProduct = () => {
         description: '',
         price: '',
         category: '',
-        brand:'',
+        brand: '',
         tags: [],
         images: [],
     });
@@ -46,7 +59,8 @@ const EditProduct = () => {
     };
 
     const handleTagsChange = (e) => {
-        setProduct({ ...product, tags: e.target.value.split(',') });
+        const selected = Array.from(e.target.selectedOptions, option => option.value);
+        setProduct({ ...product, tags: selected });
     };
 
     const handleSubmit = async (e) => {
@@ -57,14 +71,13 @@ const EditProduct = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-              showToast('success', 'Product updated successfully');
-              setTimeout(() => {
-                 navigate('/admin/dashboard');
-              }, 1000);
-           
+            showToast('success', 'Product updated successfully');
+            setTimeout(() => {
+                navigate('/admin/dashboard');
+            }, 1000);
         } catch (error) {
             console.error('Error updating product', error);
-            showToast('error', 'error updating product');
+            showToast('error', 'Error updating product');
         }
     };
 
@@ -131,15 +144,19 @@ const EditProduct = () => {
                     </div>
                     <div className="edit-product-input">
                         <label className="edit-product-label">Tags</label>
-                        <input
-                            type="text"
-                            name="tags"
-                            value={product.tags.join(',')}
+                        <select
+                            multiple
+                            value={product.tags}
                             onChange={handleTagsChange}
-                            required
                             className="edit-product-field"
-                        />
-                        <small>Enter tags separated by commas</small>
+                        >
+                            {TAG_OPTIONS.map((tagOption) => (
+                                <option key={tagOption} value={tagOption}>
+                                    {tagOption}
+                                </option>
+                            ))}
+                        </select>
+                        <small>Select multiple tags by holding Ctrl (or Cmd) key</small>
                     </div>
                     <div className="edit-product-input">
                         <label className="edit-product-label">Images (URLs)</label>

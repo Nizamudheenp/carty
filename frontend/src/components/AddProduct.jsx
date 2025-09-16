@@ -4,13 +4,27 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { showToast } from "../utils/toast";
 
+const TAG_OPTIONS = [
+  'New Arrival',
+  'Special Price',
+  'Top Brand',
+  'Best Seller',
+  'Limited Edition',
+  'Top Discount Of The Sale',
+  'Popular',
+  'Sponsored',
+  'Interested In',
+  'Featured',
+  'Top Deal'
+];
+
 const AddProduct = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
   const [brand, setBrand] = useState('');
-  const [tags, setTags] = useState('');
+  const [tags, setTags] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,14 +33,14 @@ const AddProduct = () => {
     e.preventDefault();
     const formData = new FormData();
     Array.from(images).forEach(image => formData.append('images', image));
-  
+
     formData.append('name', name);
     formData.append('description', description);
     formData.append('price', price);
-    formData.append('brand',brand);
+    formData.append('brand', brand);
     formData.append('category', category);
     formData.append('tags', tags);
-  
+
     const token = localStorage.getItem('token');
     setLoading(true);
     try {
@@ -43,7 +57,7 @@ const AddProduct = () => {
       setLoading(false);
       showToast('success', 'Product added successfully!');
       setTimeout(() => {
-           navigate('/admin/dashboard');
+        navigate('/admin/dashboard');
       }, 1000);
 
     } catch (error) {
@@ -51,7 +65,7 @@ const AddProduct = () => {
       showToast('error', 'Error adding product');
     }
   };
-  
+
   return (
     <div className="add-product-page">
       <h1 className="add-product-title">Add New Product</h1>
@@ -105,13 +119,19 @@ const AddProduct = () => {
           />
         </div>
         <div className="add-product-input">
-          <input
-            type="text"
-            placeholder="Tags (comma separated)"
+          <select
+            multiple
             value={tags}
-            onChange={(e) => setTags(e.target.value)}
+            onChange={(e) => {
+              const selected = Array.from(e.target.selectedOptions, option => option.value);
+              setTags(selected);
+            }}
             className="add-product-field"
-          />
+          >
+            {TAG_OPTIONS.map(tag => (
+              <option key={tag} value={tag}>{tag}</option>
+            ))}
+          </select>
         </div>
         <div className="add-product-input">
           <input

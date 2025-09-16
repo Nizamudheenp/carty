@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
 
       <div className="copyright">
-        <p>© 2021, Tech2 etc - HTML CSS Ecommerce Website</p>
+        <p>© 202, Tech etc - Ecommerce Website</p>
       </div>
     </footer>
   );

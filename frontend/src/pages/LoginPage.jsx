@@ -20,7 +20,6 @@ function LoginPage() {
         formData);
       const token = response.data.token;
       const user = response.data.user;
-      console.log(response);
       localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('token', token);
       showToast('success', 'login successful');
