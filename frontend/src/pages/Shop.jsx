@@ -72,7 +72,6 @@ const Shop = () => {
 
   return (
     <section id="Product-1" className="section-p1">
-      <h2>Browse the collection of our top products</h2>
       <div className="pro-container">
         {products.length === 0 ? (
           <p>No products found.</p>
