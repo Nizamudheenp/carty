@@ -20,6 +20,7 @@ import About from './components/About';
 import Contact from './pages/Contact';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
+import ComingSoon from './pages/ComingSoon';
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/coming-soon" element={<ComingSoon />} />
         <Route path="/cart" element={
           <ProtectedRoute>
             <CartPage />

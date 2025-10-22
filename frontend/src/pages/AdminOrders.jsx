@@ -41,7 +41,7 @@ const AdminOrders = () => {
   }, []);
 
   return (
-    <div className="admin-orders">
+    <div className="admin-orders m-3">
       <h2>All Orders</h2>
       {orders.length === 0 ? (
         <p>No orders found.</p>
@@ -67,7 +67,7 @@ const AdminOrders = () => {
                     </div>
                   ))}
                 </td>
-                <td>${order.totalAmount.toFixed(2)}</td>
+                <td>₹{order.totalAmount.toFixed(2)}</td>
                 <td>{order.status}</td>
                 <td>
                   <select

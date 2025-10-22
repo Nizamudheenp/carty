@@ -43,9 +43,8 @@ const Contact = () => {
         <p>We're here to help and answer any question you might have. We look forward to hearing from you! 😊</p>
 
         <div className="contact-details">
-          <p><strong>📍 Address:</strong> Dwaraka road, Wayanad, kerala ,India</p>
-          <p><strong>📞 Phone:</strong> +91 8921041795/ +91 24356787</p>
-          <p><strong>⏰ Working Hours:</strong> 10.00 AM - 10.00 PM, Monday - Saturday</p>
+          <p><strong>📍 Address:</strong>Wayanad, kerala ,India</p>
+          <p><strong>📞 Phone:</strong> +91 8921041726/ +91 24356787</p>
           <p><strong>📧 Email:</strong> support@carty.com</p>
 
           <div className="social-icons">
