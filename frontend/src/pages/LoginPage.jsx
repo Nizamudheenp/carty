@@ -25,6 +25,7 @@ function LoginPage() {
       showToast('success', 'login successful');
       setTimeout(() => {
         navigate('/');
+        location.reload();
       }, 500);
 
     } catch (err) {

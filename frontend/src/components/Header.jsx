@@ -39,7 +39,6 @@ const Header = () => {
     localStorage.removeItem('user');
     setIsLoggedIn(false);
     setShowUserDropdown(false);
-    showToast('success', 'Logout successful');
       setTimeout(() => {
          navigate('/login');
       }, 500);

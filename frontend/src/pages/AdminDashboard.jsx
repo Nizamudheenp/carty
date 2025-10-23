@@ -45,7 +45,7 @@ const AdminDashboard = () => {
           <div key={product._id} className="admin-product-card">
             <h3 className="admin-product-name">{product.name}</h3>
             <p><strong>Description:</strong> {product.description}</p>
-            <p><strong>Price:</strong> ${product.price}</p>
+            <p><strong>Price:</strong> ₹{product.price}</p>
             <p><strong>Category:</strong> {product.category}</p>
             <p><strong>Brand:</strong> {product.brand}</p>
             <p><strong>Tags:</strong> {product.tags.join(', ')}</p>
